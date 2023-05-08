@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 
 export const handlePending = state => {
 	state.isLoading = true;
+	toast.info('Pending request');
 };
 export const handleRejected = (state, action) => {
 	state.isLoading = false;

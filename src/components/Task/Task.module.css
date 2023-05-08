@@ -16,6 +16,7 @@
 .text {
 	flex-grow: 1;
 	text-align: center;
+	transition: all 0.3s ease 0s;
 }
 
 .btn {
@@ -34,6 +35,33 @@
 	transition: all 0.2s ease 0s;
 }
 
+.starBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+}
+
+.starBtn svg path {
+	fill: rgb(208, 180, 96);
+	transition: all 0.3s ease 0s;
+}
+.starBtn.isImportant svg path {
+	fill: rgb(242, 255, 0);
+	transition: all 0.3s ease 0s;
+
+	stroke-width: 1px;
+}
+.starBtn:hover svg path {
+	fill: rgb(255, 225, 0);
+	transition: all 0.3s ease 0s;
+}
+
 .btn:hover {
 	background-color: var(--blue);
 }
@@ -47,4 +75,10 @@
 	flex: 0 0 24px;
 	height: 24px;
 	cursor: pointer;
+}
+
+.isImportant {
+	color: rgb(255, 187, 0);
+	text-shadow: 1px 1px 12px rgba(255, 255, 0, 0.748);
+	fill: yellow;
 }

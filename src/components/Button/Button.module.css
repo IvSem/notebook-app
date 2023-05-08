@@ -25,3 +25,10 @@
 	background-color: #933e9d;
 	color: #c7a87f;
 }
+
+@media (max-width: 468px) {
+	.btn {
+		justify-content: center;
+		align-self: stretch;
+	}
+}

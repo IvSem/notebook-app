@@ -2,10 +2,21 @@
 	display: flex;
 	justify-content: space-between;
 }
-
+@media (max-width: 468px) {
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+	}
+}
 .section {
 	display: grid;
 	gap: 4px;
+}
+.sectionFilter {
+	display: grid;
+	gap: 4px;
+	justify-items: center;
 }
 
 .title {

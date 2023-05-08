@@ -25,3 +25,9 @@
 .field:focus {
 	border: 1px solid rgb(237, 132, 251);
 }
+
+@media (max-width: 468px) {
+	.form {
+		flex-direction: column;
+	}
+}

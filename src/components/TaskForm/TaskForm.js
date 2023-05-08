@@ -17,7 +17,7 @@ export const TaskForm = () => {
 	};
 
 	return (
-		<form className={css.form} onSubmit={handleSubmit}>
+		<form className={`${css.form} `} onSubmit={handleSubmit}>
 			<textarea
 				className={css.field}
 				type="text"

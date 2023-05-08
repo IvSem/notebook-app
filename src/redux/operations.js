@@ -52,3 +52,16 @@ export const toggleCompleted = createAsyncThunk(
 		}
 	}
 );
+export const toggleImportant = createAsyncThunk(
+	'tasks/toggleImportant',
+	async (task, thunkAPI) => {
+		try {
+			const response = await axios.put(`/tasks/${task.id}`, {
+				important: !task.important,
+			});
+			return response.data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);

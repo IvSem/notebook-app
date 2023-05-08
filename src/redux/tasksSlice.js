@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addTask, deleteTask, fetchTasks, toggleCompleted } from './operations';
+import {
+	addTask,
+	deleteTask,
+	fetchTasks,
+	toggleCompleted,
+	toggleImportant,
+} from './operations';
 import { toast } from 'react-toastify';
 import { handlePending, handleRejected } from 'helpers/functions';
 
@@ -35,7 +41,7 @@ const tasksSlice = createSlice({
 		[addTask.fulfilled](state, action) {
 			state.isLoading = false;
 			state.error = null;
-			state.items.push(action.payload);
+			state.items.unshift(action.payload);
 			toast.success('Todo successfully added');
 		},
 
@@ -54,6 +60,16 @@ const tasksSlice = createSlice({
 		//?toggleCompleted
 
 		[toggleCompleted.fulfilled](state, action) {
+			state.isLoading = false;
+			state.error = null;
+			const index = state.items.findIndex(
+				task => task.id === action.payload.id
+			);
+			state.items.splice(index, 1, action.payload);
+		},
+		//?toggleImportant
+
+		[toggleImportant.fulfilled](state, action) {
 			state.isLoading = false;
 			state.error = null;
 			const index = state.items.findIndex(
