@@ -1,39 +1,50 @@
 .wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 0;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	flex-grow: 1;
+	gap: 4px;
 }
 
 .text {
-  flex-grow: 1;
+	flex-grow: 1;
+	text-align: center;
 }
 
 .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 4px;
-  background-color: transparent;
-  cursor: pointer;
-  color: #f44336;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 32px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-radius: 4px;
+	background-color: transparent;
+	cursor: pointer;
+	color: #f44336;
+	transition: all 0.2s ease 0s;
 }
 
 .btn:hover {
-  background-color: #e2e5e8;
+	background-color: var(--blue);
 }
 
 .btn:active {
-  background-color: #bdbdbd;
+	background-color: var(--accent-color);
+	transform: translate(2px, 2px);
 }
 
 .checkbox {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+	flex: 0 0 24px;
+	height: 24px;
+	cursor: pointer;
 }

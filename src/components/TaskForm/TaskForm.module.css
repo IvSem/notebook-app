@@ -15,6 +15,7 @@
 	border: 1px solid transparent;
 	transition: all 0.3s ease 0s;
 	resize: vertical;
+	box-shadow: 4px 4px 14px #2a2a2a;
 }
 
 .field::placeholder {
