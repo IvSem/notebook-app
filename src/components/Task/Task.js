@@ -3,11 +3,11 @@ import { MdClose } from 'react-icons/md';
 import { BsStarFill } from 'react-icons/bs';
 import css from './Task.module.css';
 import { deleteTask, toggleCompleted, toggleImportant } from 'redux/operations';
-import { getIsLoading } from 'redux/selectors';
+import { selectIsLoading } from 'redux/selectors';
 import clsx from 'clsx';
 
 export const Task = ({ task }) => {
-	const isLoading = useSelector(getIsLoading);
+	const isLoading = useSelector(selectIsLoading);
 	const dispatch = useDispatch();
 	const handleDelete = () => dispatch(deleteTask(task.id));
 	const handleToggle = () => dispatch(toggleCompleted(task));
