@@ -1,15 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
-import { statusFilters } from 'redux/constants';
-import { selectStatusFilter } from 'redux/selectors';
-import { setStatusFilter } from 'redux/filtersSlice';
+
 import css from './StatusFilter.module.css';
+
+import { statusFilters } from 'redux/constants';
+import { setStatusFilter } from 'redux/filter/slice/slice';
+import { selectStatusFilter } from 'redux/filter/selectors';
 
 export const StatusFilter = () => {
 	const dispatch = useDispatch();
 	const filter = useSelector(selectStatusFilter);
 
-	const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+	const handleFilterChange = filter => {
+		return dispatch(setStatusFilter(filter));
+	};
 
 	return (
 		<div className={css.wrapper}>
@@ -30,6 +34,12 @@ export const StatusFilter = () => {
 				onClick={() => handleFilterChange(statusFilters.completed)}
 			>
 				Completed
+			</Button>
+			<Button
+				selected={filter === statusFilters.important}
+				onClick={() => handleFilterChange(statusFilters.important)}
+			>
+				Important
 			</Button>
 		</div>
 	);

@@ -1,21 +1,23 @@
-import clsx from "clsx";
-import css from "./Button.module.css";
+import clsx from 'clsx';
+import css from './Button.module.css';
 
 export const Button = ({
-  selected = false,
-  type = "button",
-  children,
-  ...otherProps
+	selected = false,
+	type = 'button',
+	children,
+	disabled,
+	...otherProps
 }) => {
-  return (
-    <button
-      className={clsx(css.btn, {
-        [css.isSelected]: selected
-      })}
-      type={type}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
+	return (
+		<button
+			className={clsx(css.btn, {
+				[css.isSelected]: selected,
+			})}
+			type={type}
+			disabled={disabled}
+			{...otherProps}
+		>
+			{children}
+		</button>
+	);
 };

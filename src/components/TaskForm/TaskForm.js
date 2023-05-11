@@ -1,16 +1,21 @@
-import { useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
 import css from './TaskForm.module.css';
-import { addTask } from 'redux/operations';
 
+import { useAddTaskMutation } from 'redux/tasks/slice/slice';
+import { toast } from 'react-toastify';
 export const TaskForm = () => {
-	const dispatch = useDispatch();
+	const [addTask, { isLoading }] = useAddTaskMutation();
 
 	const handleSubmit = event => {
 		event.preventDefault();
 		const form = event.target.elements;
 		if (form.text.value.trim() !== '') {
-			dispatch(addTask(form.text.value));
+			try {
+				addTask(form.text.value);
+				toast.success('Task added successfully');
+			} catch (error) {
+				toast.error('Failed to add task');
+			}
 		}
 
 		event.target.reset();
@@ -24,7 +29,9 @@ export const TaskForm = () => {
 				name="text"
 				placeholder="Enter task text..."
 			/>
-			<Button type="submit">Add task</Button>
+			<Button disabled={isLoading} type="submit">
+				{isLoading ? 'Add task...' : 'Add task'}
+			</Button>
 		</form>
 	);
 };

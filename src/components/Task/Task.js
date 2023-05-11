@@ -1,17 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { MdClose } from 'react-icons/md';
 import { BsStarFill } from 'react-icons/bs';
 import css from './Task.module.css';
-import { deleteTask, toggleCompleted, toggleImportant } from 'redux/operations';
-import { selectIsLoading } from 'redux/selectors';
+
 import clsx from 'clsx';
+import {
+	useDeleteTaskMutation,
+	useToggleCompletedMutation,
+	useToggleImportantMutation,
+} from 'redux/tasks/slice/slice';
 
 export const Task = ({ task }) => {
-	const isLoading = useSelector(selectIsLoading);
-	const dispatch = useDispatch();
-	const handleDelete = () => dispatch(deleteTask(task.id));
-	const handleToggle = () => dispatch(toggleCompleted(task));
-	const handleToggleImportant = () => dispatch(toggleImportant(task));
+	const [deleteTask, { isLoading: isLoadingDelete }] = useDeleteTaskMutation();
+	const [toggleCompleted, { isLoading: isLoadingCompleted }] =
+		useToggleCompletedMutation();
+	const [toggleImportant, { isLoading: isLoadingImportant }] =
+		useToggleImportantMutation();
+
+	const handleDelete = () => deleteTask(task.id);
+	const handleToggle = () => toggleCompleted(task);
+	const handleToggleImportant = () => toggleImportant(task);
 
 	return (
 		<div className={css.wrapper}>
@@ -21,6 +28,7 @@ export const Task = ({ task }) => {
 					className={css.checkbox}
 					onChange={handleToggle}
 					checked={task.completed}
+					disabled={isLoadingCompleted}
 				/>
 				<p className={clsx(css.text, { [css.isImportant]: task.important })}>
 					{task.text}
@@ -30,7 +38,7 @@ export const Task = ({ task }) => {
 			<button
 				className={clsx(css.starBtn, { [css.isImportant]: task.important })}
 				onClick={handleToggleImportant}
-				disabled={isLoading}
+				disabled={isLoadingImportant}
 			>
 				<BsStarFill
 					size={20}
@@ -38,7 +46,11 @@ export const Task = ({ task }) => {
 				/>
 			</button>
 
-			<button className={css.btn} onClick={handleDelete} disabled={isLoading}>
+			<button
+				className={css.btn}
+				onClick={handleDelete}
+				disabled={isLoadingDelete}
+			>
 				<MdClose size={24} />
 			</button>
 		</div>
