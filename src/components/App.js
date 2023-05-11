@@ -1,13 +1,17 @@
 import { AppBar, Layout, TaskForm, TaskList } from 'components';
 import { useEffect } from 'react';
-import { ToastContainer, Zoom } from 'react-toastify';
+import { toast, ToastContainer, Zoom } from 'react-toastify';
 import { DynamicAdapt } from 'helpers/adaptive';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useGetAllTasksQuery } from 'redux/tasks/slice/slice';
 
 export const App = () => {
-	useGetAllTasksQuery();
+	const { isLoading: loadingDB } = useGetAllTasksQuery();
+
+	useEffect(() => {
+		loadingDB && toast.loading('asfasfasf', { autoClose: 500 });
+	}, [loadingDB]);
 
 	useEffect(() => {
 		const da = new DynamicAdapt('max');
