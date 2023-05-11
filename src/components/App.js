@@ -5,12 +5,13 @@ import { DynamicAdapt } from 'helpers/adaptive';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useGetAllTasksQuery } from 'redux/tasks/slice/slice';
+import { FilterForm } from './FilterForm/FilterForm';
 
 export const App = () => {
-	const { isLoading: loadingDB } = useGetAllTasksQuery();
+	const { data: taskList, isLoading: loadingDB } = useGetAllTasksQuery();
 
 	useEffect(() => {
-		loadingDB && toast.loading('asfasfasf', { autoClose: 500 });
+		loadingDB && toast.info('Went to the server');
 	}, [loadingDB]);
 
 	useEffect(() => {
@@ -23,6 +24,7 @@ export const App = () => {
 			<AppBar />
 			<TaskForm />
 			<div className="relocate"></div>
+			<FilterForm data={taskList} />
 			<TaskList />
 			<ToastContainer
 				position="bottom-center"
