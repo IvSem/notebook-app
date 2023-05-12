@@ -3,6 +3,7 @@ import css from './TaskForm.module.css';
 
 import { useAddTaskMutation } from 'redux/tasks/slice/slice';
 import { toast } from 'react-toastify';
+import { nanoid } from '@reduxjs/toolkit';
 export const TaskForm = () => {
 	const [addTask, { isLoading }] = useAddTaskMutation();
 
@@ -28,8 +29,9 @@ export const TaskForm = () => {
 				type="text"
 				name="text"
 				placeholder="Enter task text..."
+				id={nanoid()}
 			/>
-			<Button disabled={isLoading} type="submit">
+			<Button disabled={isLoading} type="submit" modificator="as_c">
 				{isLoading ? 'Add task...' : 'Add task'}
 			</Button>
 		</form>

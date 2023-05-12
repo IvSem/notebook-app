@@ -1,9 +1,23 @@
 .list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .listItem + .listItem {
-  border-top: 1px solid #2f2f37;
+	border-top: 1px solid #2f2f37;
+}
+
+.errorFind {
+	text-align: center;
+	font-size: 20px;
+	color: rgb(247, 130, 130);
+	font-weight: 700;
+	text-shadow: 1px 1px 10px rgb(204, 111, 216);
+}
+
+.errorFind span {
+	font-size: 25px;
+	color: burlywood;
+	text-decoration: underline;
 }

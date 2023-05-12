@@ -26,6 +26,10 @@
 	color: #c7a87f;
 }
 
+.btn.as_c {
+	align-self: center;
+}
+
 @media (max-width: 468px) {
 	.btn {
 		justify-content: center;

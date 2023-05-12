@@ -6,11 +6,15 @@ export const Button = ({
 	type = 'button',
 	children,
 	disabled,
+	modificator,
 	...otherProps
 }) => {
+	console.log(':>  modificator:', modificator);
+	//console.log(':>  otherProps:', otherProps);
 	return (
 		<button
 			className={clsx(css.btn, {
+				[css.as_c]: modificator,
 				[css.isSelected]: selected,
 			})}
 			type={type}

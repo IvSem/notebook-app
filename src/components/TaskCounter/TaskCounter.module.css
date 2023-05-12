@@ -1,3 +1,12 @@
 .text {
-  margin: 0;
+	margin: 0;
+}
+
+@media (max-width: 468px) {
+	.wrapper {
+		display: flex;
+		column-gap: 10px;
+		justify-content: center;
+		align-items: center;
+	}
 }

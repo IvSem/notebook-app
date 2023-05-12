@@ -1,0 +1,33 @@
+.field {
+	border-radius: 10px;
+	background-color: #3cac8b97;
+	padding: 8px;
+	color: var(--main-text);
+	border: none;
+	outline: none;
+	border: 1px solid transparent;
+	transition: all 0.3s ease 0s;
+	box-shadow: 4px 4px 14px #2a2a2a;
+	font-size: 16px;
+	width: 75%;
+	text-decoration: none;
+}
+
+.label {
+	margin: 0;
+	display: grid;
+	justify-items: center;
+	row-gap: 4px;
+}
+
+.label span {
+	font-size: 20px;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+@media (max-width: 468px) {
+	.field {
+		width: 100%;
+	}
+}

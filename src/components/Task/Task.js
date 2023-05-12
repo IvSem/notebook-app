@@ -8,6 +8,7 @@ import {
 	useToggleCompletedMutation,
 	useToggleImportantMutation,
 } from 'redux/tasks/slice/slice';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const Task = ({ task }) => {
 	const [deleteTask, { isLoading: isLoadingDelete }] = useDeleteTaskMutation();
@@ -19,12 +20,14 @@ export const Task = ({ task }) => {
 	const handleDelete = () => deleteTask(task.id);
 	const handleToggle = () => toggleCompleted(task);
 	const handleToggleImportant = () => toggleImportant(task);
+	const uniqueId = nanoid();
 
 	return (
 		<div className={css.wrapper}>
-			<label className={css.label}>
+			<label className={css.label} htmlFor={uniqueId}>
 				<input
 					type="checkbox"
+					id={uniqueId}
 					className={css.checkbox}
 					onChange={handleToggle}
 					checked={task.completed}

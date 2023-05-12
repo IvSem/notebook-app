@@ -8,7 +8,7 @@ import { useGetAllTasksQuery } from 'redux/tasks/slice/slice';
 import { FilterForm } from './FilterForm/FilterForm';
 
 export const App = () => {
-	const { data: taskList, isLoading: loadingDB } = useGetAllTasksQuery();
+	const { isLoading: loadingDB } = useGetAllTasksQuery();
 
 	useEffect(() => {
 		loadingDB && toast.info('Went to the server');
@@ -22,10 +22,9 @@ export const App = () => {
 	return (
 		<Layout>
 			<AppBar />
-			<TaskForm />
-			<div className="relocate"></div>
-			<FilterForm data={taskList} />
+			<FilterForm />
 			<TaskList />
+			<TaskForm />
 			<ToastContainer
 				position="bottom-center"
 				autoClose={500}

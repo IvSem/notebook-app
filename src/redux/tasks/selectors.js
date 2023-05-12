@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { selectStatusFilter } from 'redux/filter/selectors';
+import { selectStatusFilter, selecеtValueFilter } from 'redux/filter/selectors';
 import { statusFilters } from '../constants';
 import { tasksApi } from './slice/slice';
 
@@ -10,8 +10,12 @@ export const selectTasks = createSelector([selectAllTasksResults], allTasks => {
 });
 
 export const selectVisibleTasks = createSelector(
-	[selectTasks, selectStatusFilter],
-	(tasks, statusFilter) => {
+	[selectTasks, selectStatusFilter, selecеtValueFilter],
+	(tasks, statusFilter, valueFilter) => {
+		if (valueFilter) {
+			console.log('value v selectVisible');
+		}
+
 		switch (statusFilter) {
 			case statusFilters.active:
 				return tasks?.filter(task => {
@@ -25,6 +29,14 @@ export const selectVisibleTasks = createSelector(
 			default:
 				return tasks;
 		}
+	}
+);
+export const selectFilteredByNameTasks = createSelector(
+	[selectVisibleTasks, selecеtValueFilter],
+	(tasks, value) => {
+		return tasks?.filter(task => {
+			return task.text.toLowerCase().includes(value.trim().toLowerCase());
+		});
 	}
 );
 

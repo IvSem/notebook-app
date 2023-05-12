@@ -1,5 +1,28 @@
-import React from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { setValueFilter } from 'redux/filter/slice/slice';
+import css from './FilterForm.module.css';
 
 export const FilterForm = () => {
-	return <div>FilterForm</div>;
+	const dispatch = useDispatch();
+
+	const handleChange = e => {
+		dispatch(setValueFilter(e.currentTarget.value));
+	};
+
+	const filterId = nanoid();
+
+	return (
+		<label htmlFor={filterId} className={css.label}>
+			<span>Filter by name</span>
+			<input
+				className={css.field}
+				type="text"
+				name="filter-name"
+				id={filterId}
+				placeholder="Enter any letter..."
+				onChange={handleChange}
+			/>
+		</label>
+	);
 };

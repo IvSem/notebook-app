@@ -1,22 +1,27 @@
 .wrapper {
 	display: flex;
-	justify-content: space-between;
-}
-@media (max-width: 468px) {
-	.wrapper {
-		display: flex;
-		justify-content: center;
-		text-align: center;
-	}
+	row-gap: 15px;
+	flex-direction: column;
 }
 .section {
-	display: grid;
-	gap: 4px;
+	padding-top: 36px;
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
 }
-.sectionFilter {
+.sectionFilter,
+.sectionTaskList {
 	display: grid;
 	gap: 4px;
 	justify-items: center;
+}
+.sectionTaskList {
+	justify-items: start;
+}
+.mainTitle {
+	color: red;
+	margin-top: 0;
+	text-align: center;
 }
 
 .title {
@@ -24,4 +29,68 @@
 	font-size: 20px;
 	font-weight: 700;
 	text-decoration: underline;
+}
+
+.glitch {
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	display: inline-block;
+	border: 4px double rgba(255, 255, 255, 0.622);
+	border-width: 4px 0;
+	padding: 0.3em 0em;
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	min-height: 20px;
+	top: 0;
+	left: 0;
+	margin: 0;
+	z-index: 999;
+}
+.glitch::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgb(97, 58, 58);
+	/*z-index: 2;*/
+}
+
+.glitch span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: block;
+	margin: 0 auto;
+	text-shadow: 0 0 30px rgb(255, 221, 0);
+	background: url('images/animated-text.png') 0 0 / cover repeat-y;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: aitf 50s linear infinite;
+}
+@keyframes aitf {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+
+@media (max-width: 468px) {
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+	}
+	.section {
+		flex-direction: column;
+	}
+	.sectionTaskList {
+		justify-items: center;
+	}
 }

@@ -5,14 +5,19 @@ import css from './AppBar.module.css';
 export const AppBar = () => {
 	return (
 		<header className={css.wrapper}>
-			<section className={css.section}>
-				<h2 className={css.title}>Tasks</h2>
-				<TaskCounter />
-			</section>
+			<h1 className={css.glitch}>
+				<span>Notebook App</span>
+			</h1>
 
-			<section data-da=".relocate,468,1" className={css.sectionFilter}>
-				<h2 className={css.title}>Filter by status</h2>
-				<StatusFilter />
+			<section className={css.section}>
+				<div className={css.sectionTaskList}>
+					<h2 className={css.title}>Task List</h2>
+					<TaskCounter />
+				</div>
+				<div className={css.sectionFilter}>
+					<h2 className={css.title}>Filter by status</h2>
+					<StatusFilter />
+				</div>
 			</section>
 		</header>
 	);
