@@ -1,6 +1,6 @@
 .field {
 	border-radius: 10px;
-	background-color: #3cac8b97;
+	background-color: #396457;
 	padding: 8px;
 	color: var(--main-text);
 	border: none;
@@ -11,6 +11,10 @@
 	font-size: 16px;
 	width: 75%;
 	text-decoration: none;
+}
+.field::placeholder {
+	color: var(--main-text);
+	text-shadow: 3px -3px 6px rgb(96, 255, 157);
 }
 
 .label {

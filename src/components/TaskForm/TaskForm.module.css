@@ -1,14 +1,15 @@
 .form {
-	display: flex;
+	display: grid;
+	justify-items: center;
 	gap: 4px;
 }
 
 .field {
 	border-radius: 10px;
-	background-color: #3cac8b97;
+	background-color: #74bea8;
 	flex-grow: 1;
 	padding: 8px;
-	color: var(--main-text);
+	color: #2a2a2a;
 	font: inherit;
 	border: none;
 	outline: none;
@@ -19,7 +20,7 @@
 }
 
 .field::placeholder {
-	color: var(--main-text);
+	color: #2a2a2a;
 }
 
 .field:focus {

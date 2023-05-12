@@ -7,10 +7,9 @@ export const Button = ({
 	children,
 	disabled,
 	modificator,
+	onClick,
 	...otherProps
 }) => {
-	console.log(':>  modificator:', modificator);
-	//console.log(':>  otherProps:', otherProps);
 	return (
 		<button
 			className={clsx(css.btn, {
@@ -19,6 +18,7 @@ export const Button = ({
 			})}
 			type={type}
 			disabled={disabled}
+			onClick={onClick}
 			{...otherProps}
 		>
 			{children}

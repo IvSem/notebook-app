@@ -1,4 +1,4 @@
-import { AppBar, Layout, TaskForm, TaskList } from 'components';
+import { AppBar, Layout, TaskList } from 'components';
 import { useEffect } from 'react';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 import { DynamicAdapt } from 'helpers/adaptive';
@@ -24,7 +24,7 @@ export const App = () => {
 			<AppBar />
 			<FilterForm />
 			<TaskList />
-			<TaskForm />
+			{/*<TaskForm />*/}
 			<ToastContainer
 				position="bottom-center"
 				autoClose={500}
