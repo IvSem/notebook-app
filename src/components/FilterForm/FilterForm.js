@@ -1,6 +1,6 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { Button } from 'components/Button/Button';
-import { ModalCreateTask } from 'components/ModaCreateTask/ModalCreateTask';
+import { Modal } from 'components/Modal/Modal';
 import { TaskForm } from 'components/TaskForm/TaskForm';
 import { useModal } from 'hooks/useModal';
 import { useDispatch } from 'react-redux';
@@ -31,6 +31,7 @@ export const FilterForm = () => {
 				/>
 			</label>
 			<Button
+				modificator="js_c"
 				onClick={() => {
 					console.log('klick filterForm modalisOpen');
 					setIsOpen(true);
@@ -39,11 +40,9 @@ export const FilterForm = () => {
 				Create Task
 			</Button>
 
-			{isOpen && (
-				<ModalCreateTask isOpen={isOpen} onClose={setIsOpen}>
-					<TaskForm />
-				</ModalCreateTask>
-			)}
+			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
+				<TaskForm />
+			</Modal>
 		</>
 	);
 };

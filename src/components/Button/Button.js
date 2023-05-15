@@ -13,7 +13,8 @@ export const Button = ({
 	return (
 		<button
 			className={clsx(css.btn, {
-				[css.as_c]: modificator,
+				[css.js_c]: modificator === 'js_c',
+				[css.as_c]: modificator === 'as_c',
 				[css.isSelected]: selected,
 			})}
 			type={type}

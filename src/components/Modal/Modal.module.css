@@ -1,0 +1,68 @@
+.modal {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(27, 7, 50, 0.502);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.enter {
+	opacity: 0;
+}
+
+.enterActive {
+	transition: opacity 0.3s ease-in-out;
+	opacity: 1;
+}
+
+.enterDone {
+	opacity: 1;
+}
+
+.exit {
+	opacity: 1;
+}
+
+.exitActive {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.exitDone {
+	opacity: 0;
+}
+
+.modalContent {
+	width: 50vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.contentEnter {
+	transform: translate(-100%, 0);
+	transition: transform 0.3s;
+}
+.contentEnterActive {
+	transform: translate(0, 0);
+	transition: transform 0.3s;
+}
+.contentEnterDone {
+	transform: translate(0, 0);
+}
+.contentExit {
+	transform: translate(0, 0);
+}
+.contentExitActive {
+	transform: translate(-150%, 0);
+	transition: transform 0.3s;
+}
+.contentExitDone {
+	transform: translate(-150%, 0);
+}

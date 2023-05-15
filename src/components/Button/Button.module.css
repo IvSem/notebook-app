@@ -29,6 +29,9 @@
 .btn.as_c {
 	align-self: center;
 }
+.btn.js_c {
+	justify-self: center;
+}
 
 @media (max-width: 468px) {
 	.btn {
