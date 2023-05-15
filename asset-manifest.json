@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/notebook-app/static/css/main.3cc2fbfd.css",
-    "main.js": "/notebook-app/static/js/main.cee3549a.js",
+    "main.css": "/notebook-app/static/css/main.ce57d065.css",
+    "main.js": "/notebook-app/static/js/main.1fdb49ab.js",
     "index.html": "/notebook-app/index.html",
-    "main.3cc2fbfd.css.map": "/notebook-app/static/css/main.3cc2fbfd.css.map",
-    "main.cee3549a.js.map": "/notebook-app/static/js/main.cee3549a.js.map"
+    "main.ce57d065.css.map": "/notebook-app/static/css/main.ce57d065.css.map",
+    "main.1fdb49ab.js.map": "/notebook-app/static/js/main.1fdb49ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.3cc2fbfd.css",
-    "static/js/main.cee3549a.js"
+    "static/css/main.ce57d065.css",
+    "static/js/main.1fdb49ab.js"
   ]
 }
