@@ -2,3 +2,24 @@
 	display: flex;
 	gap: 4px;
 }
+
+.wrapperSel {
+	display: inline-block;
+	position: relative;
+}
+
+.select {
+	padding: 8px 12px;
+	font-size: 16px;
+	border: 1px solid rgb(120, 201, 113);
+	border-radius: 4px;
+	background-color: rgb(126, 241, 238);
+	position: relative;
+}
+
+.select option {
+	background-color: rgba(87, 128, 169, 0.617);
+	color: #333;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	cursor: pointer;
+}

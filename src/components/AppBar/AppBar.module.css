@@ -5,8 +5,8 @@
 }
 .section {
 	padding-top: 36px;
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 200px 1fr 200px;
 	gap: 16px;
 }
 .sectionFilter,
@@ -81,6 +81,17 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.section {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.sectionTaskList {
+		grid-column: span 2;
+		justify-items: center;
+	}
+}
+
 @media (max-width: 468px) {
 	.wrapper {
 		display: flex;
@@ -88,9 +99,13 @@
 		text-align: center;
 	}
 	.section {
-		flex-direction: column;
+		grid-template-columns: 1fr;
 	}
 	.sectionTaskList {
+		grid-column: auto;
 		justify-items: center;
+	}
+	.sectionFilter {
+		grid-row: 2;
 	}
 }

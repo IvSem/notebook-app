@@ -4,7 +4,7 @@ import css from './TaskForm.module.css';
 import { useAddTaskMutation } from 'redux/tasks/slice/slice';
 import { toast } from 'react-toastify';
 import { nanoid } from '@reduxjs/toolkit';
-export const TaskForm = () => {
+export const TaskForm = ({ onClose }) => {
 	const [addTask, { isLoading }] = useAddTaskMutation();
 
 	const handleSubmit = event => {
@@ -17,6 +17,7 @@ export const TaskForm = () => {
 			} catch (error) {
 				toast.error('Failed to add task');
 			}
+			onClose();
 		}
 
 		event.target.reset();

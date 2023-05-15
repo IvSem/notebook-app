@@ -1,15 +1,10 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { Button } from 'components/Button/Button';
-import { Modal } from 'components/Modal/Modal';
-import { TaskForm } from 'components/TaskForm/TaskForm';
-import { useModal } from 'hooks/useModal';
 import { useDispatch } from 'react-redux';
 import { setValueFilter } from 'redux/filter/slice/slice';
 import css from './FilterForm.module.css';
 
 export const FilterForm = () => {
 	const dispatch = useDispatch();
-	const { isOpen, setIsOpen } = useModal();
 
 	const handleChange = e => {
 		dispatch(setValueFilter(e.currentTarget.value));
@@ -18,7 +13,7 @@ export const FilterForm = () => {
 	const filterId = nanoid();
 
 	return (
-		<>
+		<div className={css.wrapper}>
 			<label htmlFor={filterId} className={css.label}>
 				<span>Filter by name</span>
 				<input
@@ -30,19 +25,6 @@ export const FilterForm = () => {
 					onChange={handleChange}
 				/>
 			</label>
-			<Button
-				modificator="js_c"
-				onClick={() => {
-					console.log('klick filterForm modalisOpen');
-					setIsOpen(true);
-				}}
-			>
-				Create Task
-			</Button>
-
-			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
-				<TaskForm />
-			</Modal>
-		</>
+		</div>
 	);
 };

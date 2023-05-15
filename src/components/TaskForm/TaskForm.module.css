@@ -2,6 +2,7 @@
 	display: grid;
 	justify-items: center;
 	gap: 4px;
+	width: 100%;
 }
 
 .field {
@@ -17,6 +18,7 @@
 	transition: all 0.3s ease 0s;
 	resize: vertical;
 	box-shadow: 4px 4px 14px #2a2a2a;
+	width: 100%;
 }
 
 .field::placeholder {

@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
 import clsx from 'clsx';
+
 const MODAL_CONTAINER = document.querySelector('#modal-container');
 
-export const Modal = ({ open, children, onClose }) => {
+export const Modal = ({ open, children, onClose, focus }) => {
 	const [active, setActive] = useState(false);
 	const [aniClassName, setAniClassName] = useState('');
 	const [contentClassName, setContentClassName] = useState('');
+	const contentRef = useRef(null);
 
 	const onTransitionEnd = () => {
 		setAniClassName(open ? styles.enterDone : styles.exitDone);
@@ -51,6 +53,23 @@ export const Modal = ({ open, children, onClose }) => {
 		};
 	}, [onClose, open]);
 
+	useEffect(() => {
+		const focusFirstChild = element => {
+			if (!element) return;
+			const children = [...element.children];
+			const firstFormEl = [...children.filter(el => el.tagName === 'FORM')];
+			if (firstFormEl.length === 1) {
+				firstFormEl[0][0].focus();
+			} else {
+				firstFormEl[focus - 1][0].focus();
+			}
+		};
+
+		if (open && contentRef.current) {
+			focusFirstChild(contentRef.current);
+		}
+	}, [focus, open]);
+
 	if (!open && !active) {
 		return null;
 	}
@@ -62,6 +81,7 @@ export const Modal = ({ open, children, onClose }) => {
 			onClick={onClose}
 		>
 			<div
+				ref={contentRef}
 				className={clsx(styles.modalContent, contentClassName)}
 				onTransitionEnd={onTransitionEnd}
 				onClick={e => {
@@ -69,9 +89,6 @@ export const Modal = ({ open, children, onClose }) => {
 				}}
 			>
 				{children}
-			</div>
-			<div className={styles.modalCloseBtn} onClick={onClose}>
-				x
 			</div>
 		</div>,
 		MODAL_CONTAINER

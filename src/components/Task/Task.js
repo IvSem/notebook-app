@@ -9,6 +9,7 @@ import {
 	useToggleImportantMutation,
 } from 'redux/tasks/slice/slice';
 import { nanoid } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const Task = ({ task }) => {
 	const [deleteTask, { isLoading: isLoadingDelete }] = useDeleteTaskMutation();
@@ -17,7 +18,14 @@ export const Task = ({ task }) => {
 	const [toggleImportant, { isLoading: isLoadingImportant }] =
 		useToggleImportantMutation();
 
-	const handleDelete = () => deleteTask(task.id);
+	const handleDelete = async () => {
+		try {
+			await deleteTask(task.id);
+			toast.success('Delete success');
+		} catch (error) {
+			toast.error('Error');
+		}
+	};
 	const handleToggle = () => toggleCompleted(task);
 	const handleToggleImportant = () => toggleImportant(task);
 	const uniqueId = nanoid();
@@ -33,8 +41,9 @@ export const Task = ({ task }) => {
 					checked={task.completed}
 					disabled={isLoadingCompleted}
 				/>
+
 				<p className={clsx(css.text, { [css.isImportant]: task.important })}>
-					{task.text}
+					{isLoadingDelete ? <>Loading...</> : task.text}
 				</p>
 			</label>
 

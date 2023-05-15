@@ -12,10 +12,6 @@ export const selectTasks = createSelector([selectAllTasksResults], allTasks => {
 export const selectVisibleTasks = createSelector(
 	[selectTasks, selectStatusFilter, selecеtValueFilter],
 	(tasks, statusFilter, valueFilter) => {
-		if (valueFilter) {
-			console.log('value v selectVisible');
-		}
-
 		switch (statusFilter) {
 			case statusFilters.active:
 				return tasks?.filter(task => {
@@ -50,3 +46,27 @@ export const selectTaskCount = createSelector([selectTasks], tasks => {
 		{ active: 0, completed: 0, important: 0 }
 	);
 });
+
+export const selectFilteredTasks = createSelector(
+	[selectTasks, selectStatusFilter, selecеtValueFilter],
+	(tasks, statusFilter, valueFilter) => {
+		return tasks
+			?.filter(task => {
+				switch (statusFilter) {
+					case statusFilters.active:
+						return !task.completed;
+					case statusFilters.completed:
+						return task.completed;
+					case statusFilters.important:
+						return task.important;
+					default:
+						return true;
+				}
+			})
+			.filter(task => {
+				return task.text
+					.toLowerCase()
+					.includes(valueFilter.trim().toLowerCase());
+			});
+	}
+);

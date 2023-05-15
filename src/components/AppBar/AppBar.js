@@ -1,3 +1,4 @@
+import { FilterForm } from 'components/FilterForm/FilterForm';
 import { StatusFilter } from 'components/StatusFilter/StatusFilter';
 import { TaskCounter } from 'components/TaskCounter/TaskCounter';
 import css from './AppBar.module.css';
@@ -14,6 +15,7 @@ export const AppBar = () => {
 					<h2 className={css.title}>Task List</h2>
 					<TaskCounter />
 				</div>
+				<FilterForm />
 				<div className={css.sectionFilter}>
 					<h2 className={css.title}>Filter by status</h2>
 					<StatusFilter />
