@@ -33,7 +33,7 @@ export const App = () => {
 						setIsOpen(true);
 					}}
 				>
-					Create Task (Artem)
+					Create Task
 					<IoAddCircleSharp size={20} />
 				</Button>
 
